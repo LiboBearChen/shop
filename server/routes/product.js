@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require("../models/User");
+const { Product } = require("../models/Product");
 const multer=require('multer');
 const { auth } = require("../middleware/auth");
 
@@ -33,5 +33,12 @@ router.post("/uploadImage", auth, (req, res) => {
     })
 });
 
+router.post("/uploadProduct", auth, (req, res) => {
+    const product=new Product(req.body)
+    upload(req,res,err=>{
+        if(err) return res.json({success:false, err})
+        return res.json({success:true,image:res.req.file.path,fileName:res.req.file.filename})
+    })
+});
 
 module.exports = router;
