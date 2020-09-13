@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Typography, Button, Form, message, Input, Icon} from 'antd'
 import FileUpload from '../../utils/FileUpload'
 import Axios from 'axios';
-import { response } from 'express';
+
 
 const {Title}=Typography;
 const {TextArea}=Input;
@@ -48,6 +48,9 @@ function UploadProductPage(props){
 
     const onSubmit=(event)=>{
         event.preventDefault();
+        if(!TitleValue||!DescriptionValue||!PriceValue||!ContinentValue||!Images){
+            return alert('fill all the fields first!')
+        }
         const variables={
             writer:props.user.userData._id,
             title:TitleValue,
