@@ -22,6 +22,7 @@ var storage=multer.diskStorage({
 })
 
 var upload=multer({storage:storage}).single("file")
+
 //=================================
 //             Product
 //=================================
@@ -35,9 +36,9 @@ router.post("/uploadImage", auth, (req, res) => {
 
 router.post("/uploadProduct", auth, (req, res) => {
     const product=new Product(req.body)
-    upload(req,res,err=>{
-        if(err) return res.json({success:false, err})
-        return res.json({success:true,image:res.req.file.path,fileName:res.req.file.filename})
+    product.save((err)=>{
+        if(err) return res.status(400).json({success:false, err})
+        return res.status(200).json({success:true})
     })
 });
 
