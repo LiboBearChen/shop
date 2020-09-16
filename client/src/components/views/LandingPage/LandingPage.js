@@ -54,12 +54,16 @@ function LandingPage() {
         </Col>
     })
 
+    const handleFilters=(filters,category)=>{
+
+    }
+    
     return (
         <div style={{ width: '75%', margin: '3rem auto' }}>
             <div style={{ textAlign: 'center' }}>
                 <h2>Let's Travel Anywhere <Icon type="rocket" /></h2>
             </div>
-            <CheckBox/>
+            <CheckBox handleFilters={filters=>handleFilters(filters,"continents")}/>
             {Products.length === 0 ?
                 <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
                     <h2>No post yet...</h2>
