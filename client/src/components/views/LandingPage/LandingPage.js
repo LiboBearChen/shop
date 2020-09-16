@@ -1,50 +1,53 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios';
-import { Icon,Col,Card,Row } from 'antd'
+import { Icon, Col, Card, Row } from 'antd'
 import ImageSlider from '../../utils/ImageSlider'
-const {Meta}=Card;
+const { Meta } = Card;
 
 function LandingPage() {
 
     const [Products, setProducts] = useState([])
     const [Skip, setSkip] = useState(0)
     const [Limit, setLimit] = useState(8)
+    const [PostSize, setPostSize] = useState(0)
 
     useEffect(() => {
-        const variables={
-            skip:Skip,
-            limit:Limit
+        const variables = {
+            skip: Skip,
+            limit: Limit
         }
 
         getProducts(variables)
     }, [])
 
-    const getProducts=(variables)=>{
-        Axios.post('/api/product/getProducts',variables)
+    const getProducts = (variables) => {
+        Axios.post('/api/product/getProducts', variables)
             .then(response => {
                 if (response.data.success) {
-                    setProducts(response.data.products)
-                    console.log(response.data.products)
+                    setProducts([...Products, ...response.data.products])
+                    setPostSize(response.data.postSize)
                 } else {
                     alert('Failed to fetch product data')
                 }
             })
     }
 
-    const onLoadMore=()=>{
-        let skip=Skip+Limit
+    const onLoadMore = () => {
+        let skip = Skip + Limit
 
-        const variables={
-            skip:skip,
-            limit:Limit
+        const variables = {
+            skip: skip,
+            limit: Limit
         }
 
         getProducts(variables)
+
+        setSkip(skip)
     }
 
     const renderCards = Products.map((product, index) => {
         return <Col key={index} lg={6} md={8} xs={24}>
-            <Card  hoverable={true} cover={<ImageSlider images={product.images} />} >
+            <Card hoverable={true} cover={<ImageSlider images={product.images} />} >
                 <Meta title={product.title} description={`$${product.price}`} />
             </Card>
         </Col>
@@ -66,9 +69,12 @@ function LandingPage() {
                 </div>
             }
             <br /><br />
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <button onClick={onLoadMore}>Load More</button>
-            </div>
+            {PostSize >= Limit &&
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <button onClick={onLoadMore}>Load More</button>
+                </div>
+            }
+
         </div>
     )
 }
