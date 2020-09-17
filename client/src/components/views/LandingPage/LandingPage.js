@@ -11,6 +11,10 @@ function LandingPage() {
     const [Skip, setSkip] = useState(0)
     const [Limit, setLimit] = useState(8)
     const [PostSize, setPostSize] = useState(0)
+    const [Filters, setFilters] = useState({
+        continents:[],
+        price:[]
+    })
 
     useEffect(() => {
         const variables = {
@@ -54,19 +58,36 @@ function LandingPage() {
         </Col>
     })
 
-    const handleFilters=(filters,category)=>{
+    const showFilteredResults=(filters)=>{
+        const variables = {
+            skip: 0,
+            limit: Limit,
+            filters:filters
+        }
 
+        getProducts(variables)
+        setSkip(0)
     }
-    
+
+    const handleFilters=(filters,category)=>{
+        const newFilters={...Filters}
+        newFilters[category]=filters
+        if(category==="price"){
+
+        }
+        showFilteredResults(newFilters)
+        setFilters(newFilters)
+    }
+
     return (
         <div style={{ width: '75%', margin: '3rem auto' }}>
             <div style={{ textAlign: 'center' }}>
-                <h2>Let's Travel Anywhere <Icon type="rocket" /></h2>
+                <h2>All Products <Icon type="rocket" /></h2>
             </div>
             <CheckBox handleFilters={filters=>handleFilters(filters,"continents")}/>
             {Products.length === 0 ?
                 <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
-                    <h2>No post yet...</h2>
+                    <h2>Loading...</h2>
                 </div> :
                 <div>
                     <Row gutter={[16, 16]}>
