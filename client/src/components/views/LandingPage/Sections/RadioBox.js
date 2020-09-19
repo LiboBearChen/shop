@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Radio,Collapse} from 'antd'
 
 const {Panel}=Collapse
@@ -12,17 +12,26 @@ const price=[
     {"_id":5, "name":"More than $300", "array":[300,88888888]}
 ]
 
-function RadioBox() {
-    const renderRadioBox=()=>{
+function RadioBox(props) {
+
+    const [Value, setValue] = useState('0')
+
+    const renderRadioBox=()=>(
         price.map((value)=>(
             <Radio key={value._id} value={`${value._id}`}>{value.name}</Radio>
         ))
+    )
+
+    const habdleChange=(event)=>{
+        setValue(event.target.value)
+        props.handleFilters(event.target.value)
     }
+
     return (
         <div>
             <Collapse defaultActiveKey={['0']}>
-                <Panel header="price" key="1">
-                    <Radio.Group onChange value>
+                <Panel header="Price" key="1">
+                    <Radio.Group onChange={habdleChange} value={Value} >
                         {renderRadioBox()}
                     </Radio.Group>
                 </Panel>
