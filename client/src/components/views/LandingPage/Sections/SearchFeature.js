@@ -3,12 +3,13 @@ import {Input} from 'antd'
 
 const {Search}=Input
 
-function SearchFeature() {
+function SearchFeature(props) {
 
     const [SearchTerms, setSearchTerms] = useState("")
 
     const onChangeSearch=(event)=>{
         setSearchTerms(event.currentTarget.value)
+        props.refreshFunction(event.currentTarget.value)
     }
 
     return (
