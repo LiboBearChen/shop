@@ -111,9 +111,9 @@ function LandingPage() {
             skip: 0,
             limit: Limit,
             filters: Filters,
-            //searchTerm:newSearchTerm
+            searchTerm:newSearchTerm
         }
-        console.log(variables)
+        //console.log(variables)
         getProducts(variables)
         setSkip(0)
         setSearchTerms(newSearchTerm)
