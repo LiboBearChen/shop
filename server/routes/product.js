@@ -44,7 +44,7 @@ router.post("/uploadProduct", auth, (req, res) => {
 });
 
 router.post("/getProducts", (req, res) => {
-    
+
     let order = req.body.order ? req.body.order : "desc"
     let sortBy = req.body.sortBy ? req.body.sortBy : "_id"
     let limit = req.body.limit ? parseInt(req.body.limit) : 100
@@ -90,6 +90,23 @@ router.post("/getProducts", (req, res) => {
             })
     }
 
+});
+
+//?id=${productId}&type=single
+router.get("/products_by_id", auth, (req, res) => {
+    let type = req.query.type
+    let productIds = req.query.id
+
+    if (type === "array") {
+
+    }
+
+    Product.find({ '_id': { $in: productIds } })
+        .populate("writer")
+        .exec((err, products) => {
+            if (err) return res.status(400).send(err)
+            return res.status(200).send(product)
+        })
 });
 
 module.exports = router;
