@@ -25,10 +25,10 @@ function DetailProductPage(props) {
             <br />
             <Row gutter={[16, 16]}>
                 <Col lg={12} xs={24}>
-                    <ProductImage />
+                    <ProductImage detail={Product} />
                 </Col>
                 <Col lg={12} xs={24}>
-                    <ProductInfo />
+                    <ProductInfo detail={Product} />
                 </Col>
             </Row>
         </div>
