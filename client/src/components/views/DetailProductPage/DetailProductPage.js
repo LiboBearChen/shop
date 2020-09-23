@@ -12,8 +12,12 @@ function DetailProductPage(props) {
     useEffect(() => {
         Axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
         .then(response=>{
-            setProduct(response.data[0])
-            console.log(response)
+            if (response.data.success) {
+                setProduct(response.data[0])
+                console.log(response)
+            } else {
+                alert('Failed to fetch the product data')
+            }
         })
         
     }, [])

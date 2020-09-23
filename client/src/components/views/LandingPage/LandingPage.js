@@ -36,10 +36,11 @@ function LandingPage() {
                 if (response.data.success) {
                     if (variables.loadMore) {
                         setProducts([...Products, ...response.data.products])
+                        
                     } else {
                         setProducts(response.data.products)
                     }
-
+                    console.log(response)
                     setPostSize(response.data.postSize)
                 } else {
                     alert('Failed to fetch product data')
