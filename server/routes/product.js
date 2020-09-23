@@ -96,8 +96,7 @@ router.post("/getProducts", (req, res) => {
 router.get("/products_by_id", auth, (req, res) => {
     let type = req.query.type
     let productIds = req.query.id
-    console.log("type: ", type)
-    console.log("productIds:", productIds)
+    
     if (type === "array") {
 
     }

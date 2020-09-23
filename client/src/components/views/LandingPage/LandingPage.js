@@ -40,7 +40,7 @@ function LandingPage() {
                     } else {
                         setProducts(response.data.products)
                     }
-                    console.log(response)
+                    
                     setPostSize(response.data.postSize)
                 } else {
                     alert('Failed to fetch product data')
