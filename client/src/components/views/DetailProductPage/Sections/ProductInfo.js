@@ -8,6 +8,11 @@ function ProductInfo(props) {
     useEffect(() => {
         setProduct(props.detail)
     }, [props.detail])
+
+    const addToCartHander=()=>{
+        props.addToCart(props.detail._id)
+    }
+
     return (
         <div>
             <Descriptions title="Product Info" >
@@ -20,7 +25,7 @@ function ProductInfo(props) {
             <br />
             <br />
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Button size="large" shape="round" type="danger" onClick >Add to Cart</Button>
+                <Button size="large" shape="round" type="danger" onClick={addToCartHander} >Add to Cart</Button>
             </div>
         </div>
     )
