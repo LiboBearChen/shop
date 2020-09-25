@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
-import { Icon, Col, Card, Row } from 'antd'
+import { Col, Row } from 'antd'
 import ProductImage from './Sections/ProductImage'
 import ProductInfo from './Sections/ProductInfo'
 import {addToCart} from '../../../_actions/user_actions'
@@ -19,7 +19,7 @@ function DetailProductPage(props) {
 
     }, [])
 
-    const addToCartHander=(productId)=>{
+    const addToCartHandler=(productId)=>{
         dispatch(addToCart(productId))
     }
 
@@ -34,7 +34,7 @@ function DetailProductPage(props) {
                     <ProductImage detail={Product} />
                 </Col>
                 <Col lg={12} xs={24}>
-                    <ProductInfo addToCart={addToCartHander} detail={Product} />
+                    <ProductInfo addToCart={addToCartHandler} detail={Product} />
                 </Col>
             </Row>
         </div>
