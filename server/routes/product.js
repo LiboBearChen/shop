@@ -93,12 +93,18 @@ router.post("/getProducts", (req, res) => {
 });
 
 //?id=${productId}&type=single
+//id=21321,123213,213213,213213
 router.get("/products_by_id", auth, (req, res) => {
     let type = req.query.type
     let productIds = req.query.id
     
     if (type === "array") {
-
+        let ids=req.query.id.split(',')
+        console.log(ids)
+        productIds=[]
+        productIds=ids.map(item=>{
+            return item
+        })
     }
 
     Product.find({ '_id': { $in: productIds } })
