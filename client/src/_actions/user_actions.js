@@ -4,7 +4,8 @@ import {
     REGISTER_USER,
     AUTH_USER,
     LOGOUT_USER,
-    ADD_TO_CART_USER
+    ADD_TO_CART_USER,
+    GET_CART_ITEMS_USER
 } from './types';
 import { USER_SERVER } from '../components/Config.js';
 
@@ -64,7 +65,7 @@ export function getCartItems(cartItems, userCart) {
             //add quantity data to product info
             userCart.forEach(cartItem => {
                 response.data.forEach((productDetail, i) => {
-                    if (cartItem.id === productDetail - _id) {
+                    if (cartItem.id === productDetail._id) {
                         response.data[i].quantity = cartItem.quantity
                     }
                 })
@@ -73,7 +74,7 @@ export function getCartItems(cartItems, userCart) {
         })
 
     return {
-        type: ADD_TO_CART_USER,
+        type: GET_CART_ITEMS_USER,
         payload: request
     }
 }
