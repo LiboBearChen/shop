@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 function UserCardBlock(props) {
 
-    const [Products, setProducts] = useState([1])
+    const [Products, setProducts] = useState([])
 
     const renderItems = Products.map((product, index) => {
         return <tr key={index} >
@@ -15,12 +15,11 @@ function UserCardBlock(props) {
         </tr>
     })
 
-
     useEffect(() => {
-        console.log(props.products)
-        setProducts(props.products)
+        if(props.products){
+            setProducts(props.products)
+        }
     }, [props.products])
-
 
     return (
         <div>
@@ -33,18 +32,10 @@ function UserCardBlock(props) {
                         <th>Remobe from Cart</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {Products.length > 0 ?
-                        { renderItems } :
-                        <tr>
-                            <th>!!!!!!!!11</th>
-                            <th>!!!!!!111</th>
-                            <th>!!!!!!!!!!</th>
-                            <th>!!!!!!!!!</th>
-                        </tr>
-                    }
-
-                </tbody>
+                {Products.length === 0 ?
+                    <tbody></tbody> :
+                    <tbody>{renderItems}</tbody>
+                }
             </table>
         </div>
     )
