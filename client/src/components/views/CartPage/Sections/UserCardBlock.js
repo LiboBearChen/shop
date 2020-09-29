@@ -4,14 +4,21 @@ function UserCardBlock(props) {
 
     const [Products, setProducts] = useState([])
 
+    const renderCartImage=(images)=>{
+        if(images.length>0){
+            let image=images[0]
+            return `http://localhost:5000/${image}`
+        }
+    }
+
     const renderItems = Products.map((product, index) => {
         return <tr key={index} >
             <td>
-                <img style={{ width: '70px' }} alt="product" src />
+                <img style={{ width: '70px' }} alt="product" src={renderCartImage(product.images)} />
             </td>
             <td>{product.quantity} EA</td>
             <td>$ {product.price}</td>
-            <td><button onClick>Remove</button></td>
+            <td><button onClick={()=>props.removeItem(product._id)} >Remove</button></td>
         </tr>
     })
 
