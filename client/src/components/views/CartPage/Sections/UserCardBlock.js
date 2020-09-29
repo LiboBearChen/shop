@@ -1,24 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function UserCardBlock(props) {
 
-    const renderItems = () => {
-        let x=[]
-        props.products && props.products.map(product => (
-            x.push(product._id)
-            
-        ))
+    const [Products, setProducts] = useState([1])
 
-        console.log(x)
-    }
-{/* <tr key={product._id} >
-                <td>
-                    <img style={{ width: '70px' }} alt="product" src />
-                </td>
-                <td>{product.quantity} EA</td>
-                <td>$ {product.price}</td>
-                <td><button onClick>Remove</button></td>
-            </tr> */}
+    const renderItems = Products.map((product, index) => {
+        return <tr key={index} >
+            <td>
+                <img style={{ width: '70px' }} alt="product" src />
+            </td>
+            <td>{product.quantity} EA</td>
+            <td>$ {product.price}</td>
+            <td><button onClick>Remove</button></td>
+        </tr>
+    })
+
+
+    useEffect(() => {
+        console.log(props.products)
+        setProducts(props.products)
+    }, [props.products])
+
+
     return (
         <div>
             <table>
@@ -31,7 +34,16 @@ function UserCardBlock(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {renderItems()}
+                    {Products.length > 0 ?
+                        { renderItems } :
+                        <tr>
+                            <th>!!!!!!!!11</th>
+                            <th>!!!!!!111</th>
+                            <th>!!!!!!!!!!</th>
+                            <th>!!!!!!!!!</th>
+                        </tr>
+                    }
+
                 </tbody>
             </table>
         </div>
