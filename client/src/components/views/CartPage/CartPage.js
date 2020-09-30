@@ -1,6 +1,6 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { getCartItems,removeCartItem } from '../../../_actions/user_actions'
+import { getCartItems, removeCartItem } from '../../../_actions/user_actions'
 import UserCardBlock from './Sections/UserCardBlock'
 import { Result, Empty } from 'antd'
 
@@ -8,6 +8,8 @@ function CartPage(props) {
 
     const dispatch = useDispatch()
     const [Total, setTotal] = useState(0)
+    const [ShowTotal, setShowTotal] = useState(false)
+    const [ShowSuccess, setShowSuccess] = useState(false)
 
     useEffect(() => {
         let cartItems = []
@@ -21,22 +23,24 @@ function CartPage(props) {
             }
         }
     }, [props.user.userData])
-    
+
     useEffect(() => {
-        if(props.user.cartDetail&&props.user.cartDetail.length>0){
+        if (props.user.cartDetail && props.user.cartDetail.length > 0) {
             calculateTotal(props.user.cartDetail)
         }
     }, [props.user.cartDetail])
 
-    const calculateTotal=(cartDetail)=>{
-        let total=0
-        cartDetail.map(item=>{
-            total+=parseInt(item.price,10)*item.quantity
+    const calculateTotal = (cartDetail) => {
+        let total = 0
+        cartDetail.map(item => {
+            total += parseInt(item.price, 10) * item.quantity
         })
         setTotal(total)
+        setShowTotal(true)
     }
 
-    const removeFromCart=()=>{
+    const removeFromCart = (productId) => {
+        dispatch(removeCartItem(productId))
 
     }
 
@@ -48,7 +52,8 @@ function CartPage(props) {
                 <div style={{ marginTop: '3rem' }} >
                     <h2>Total amount: ${Total} </h2>
                 </div>
-                <Result status="success" title="Successfully Purchased Items" />
+                {ShowSuccess&&<Result status="success" title="Successfully Purchased Items" />}
+                
                 <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} >
                     <br />
                     <Empty description={false} />
