@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Menu, Icon, Badge } from 'antd';
 import axios from 'axios';
@@ -37,7 +36,7 @@ function RightMenu(props) {
           <a href="/product/upload">Upload</a>
         </Menu.Item>
         <Menu.Item key="cart">
-          <Badge count={0}>
+          <Badge count={user.userData && user.userData.cart.length}>
             <a href="/user/cart" style={{ marginRight: -22, color: '#667777' }} >
               <Icon type="shopping-cart" style={{ fontSize: 30, marginBottom: 4 }} />
             </a>

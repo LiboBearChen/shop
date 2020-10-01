@@ -25,8 +25,10 @@ function CartPage(props) {
     }, [props.user.userData])
 
     useEffect(() => {
+        setShowTotal(false)
         if (props.user.cartDetail && props.user.cartDetail.length > 0) {
             calculateTotal(props.user.cartDetail)
+            setShowTotal(true)
         }
     }, [props.user.cartDetail])
 
@@ -36,12 +38,10 @@ function CartPage(props) {
             total += parseInt(item.price, 10) * item.quantity
         })
         setTotal(total)
-        setShowTotal(true)
     }
 
     const removeFromCart = (productId) => {
         dispatch(removeCartItem(productId))
-
     }
 
     return (
@@ -49,16 +49,21 @@ function CartPage(props) {
             <h1>My Cart</h1>
             <div>
                 <UserCardBlock products={props.user.cartDetail} removeItem={removeFromCart} />
-                <div style={{ marginTop: '3rem' }} >
-                    <h2>Total amount: ${Total} </h2>
-                </div>
-                {ShowSuccess&&<Result status="success" title="Successfully Purchased Items" />}
-                
-                <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} >
-                    <br />
-                    <Empty description={false} />
-                    <p>No Items In the Cart</p>
-                </div>
+
+                {ShowTotal ?
+                    <div style={{ marginTop: '3rem' }} >
+                        <h2>Total amount: ${Total} </h2>
+                    </div> :
+                    ShowSuccess ?
+                        <Result status="success" title="Successfully Purchased Items" /> :
+                        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} >
+                            <br />
+                            <Empty description={false} />
+                            <p>No Items In the Cart</p>
+                        </div>
+                }
+
+
             </div>
         </div>
     )
