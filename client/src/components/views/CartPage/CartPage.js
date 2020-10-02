@@ -4,6 +4,8 @@ import { getCartItems, removeCartItem } from '../../../_actions/user_actions'
 import UserCardBlock from './Sections/UserCardBlock'
 import { Result, Empty } from 'antd'
 import Paypal from '../../utils/Paypal'
+import Axios from 'axios'
+import { response } from 'express'
 
 function CartPage(props) {
 
@@ -45,8 +47,20 @@ function CartPage(props) {
         dispatch(removeCartItem(productId))
     }
 
-    const transactionSuccess=()=>{
+    const transactionSuccess=(data)=>{
+        let variables={
+            cartDetail:props.user.cartDetail,
+            paymentData:data
+        }
 
+        Axios.post('/api/users/successBuy',variables)
+        .then(response=>{
+            if(response.data.success){
+
+            }else{
+                alert('Failed to buy it')
+            }
+        })
     }
 
     const transactionError=()=>{

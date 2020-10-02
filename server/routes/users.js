@@ -137,4 +137,39 @@ router.get('/removeFromCart',auth,(req,res)=>{
     )
 })
 
+router.post('/successBuy',auth,(req,res)=>{
+    let history=[]
+    let transactionData={}
+
+    req.body.cartDetail.forEach((item)=>{
+        history.push({
+            dateOfPurchase:Date.now(),
+            name:item.title,
+            id:item._id,
+            price:item.price,
+            quantity:item.quantity,
+            paymentId:req.body.paymentData.paymentID
+            
+        })
+    })
+
+    transactionData.user={
+        id:req.user._id,
+        name:req.user.name,
+        lastname:req.user.lastname,
+        email:req.user.email
+    }
+
+    transactionData.data=req.body.paymentData
+    transactionData.product=history
+
+    User.findOneAndUpdate(
+        {_id:req.user._id},
+        {$push:{history:history},$set:{cart:[]}},
+        {new:true},
+        (err,user)=>{
+            if(err) return res.json({success:false,err})
+        }
+    )
+})
 module.exports = router;
