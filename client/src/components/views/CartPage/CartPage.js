@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { getCartItems, removeCartItem } from '../../../_actions/user_actions'
 import UserCardBlock from './Sections/UserCardBlock'
 import { Result, Empty } from 'antd'
+import Paypal from '../../utils/Paypal'
 
 function CartPage(props) {
 
@@ -44,6 +45,18 @@ function CartPage(props) {
         dispatch(removeCartItem(productId))
     }
 
+    const transactionSuccess=()=>{
+
+    }
+
+    const transactionError=()=>{
+        console.log('Paypal error')
+    }
+
+    const transactionCanceled=()=>{
+        console.log('Transaction canceled')
+    }    
+
     return (
         <div style={{ width: '85%', margin: '3rem auto' }} >
             <h1>My Cart</h1>
@@ -62,9 +75,13 @@ function CartPage(props) {
                             <p>No Items In the Cart</p>
                         </div>
                 }
-
-
             </div>
+            <Paypal 
+                toPay={Total}
+                onSuccess={transactionSuccess}
+                transactionError={transactionError}
+                transactionCanceled={transactionCanceled}
+            />
         </div>
     )
 }
