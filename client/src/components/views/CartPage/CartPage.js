@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { getCartItems, removeCartItem,onSuccessBuy } from '../../../_actions/user_actions'
+import { getCartItems, removeCartItem, onSuccessBuy } from '../../../_actions/user_actions'
 import UserCardBlock from './Sections/UserCardBlock'
 import { Result, Empty } from 'antd'
 import Paypal from '../../utils/Paypal'
@@ -47,34 +47,26 @@ function CartPage(props) {
         dispatch(removeCartItem(productId))
     }
 
-    const transactionSuccess=(data)=>{
-        let variables={
-            cartDetail:props.user.cartDetail,
-            paymentData:data
-        }
-
-        Axios.post('/api/users/successBuy',variables)
-        .then(response=>{
-            if(response.data.success){
-                setShowSuccess(true)
-                setShowTotal(false)
-                dispatch(onSuccessBuy({
-                    cart:response.data.cart,
-                    cartDetail:response.data.cartDetail
-                }))
-            }else{
-                alert('Failed to buy it')
-            }
-        })
+    const transactionSuccess = (data) => {
+        dispatch(onSuccessBuy({
+            cartDetail: props.user.cartDetail,
+            paymentData: data
+        }))
+            .then(response => {
+                if (response.payload.success) {
+                    setShowSuccess(true)
+                    setShowTotal(false)
+                }
+            })
     }
 
-    const transactionError=()=>{
+    const transactionError = () => {
         console.log('Paypal error')
     }
 
-    const transactionCanceled=()=>{
+    const transactionCanceled = () => {
         console.log('Transaction canceled')
-    }    
+    }
 
     return (
         <div style={{ width: '85%', margin: '3rem auto' }} >
@@ -95,12 +87,15 @@ function CartPage(props) {
                         </div>
                 }
             </div>
-            <Paypal 
-                toPay={Total}
-                onSuccess={transactionSuccess}
-                transactionError={transactionError}
-                transactionCanceled={transactionCanceled}
-            />
+            {ShowTotal &&
+                <Paypal
+                    toPay={Total}
+                    onSuccess={transactionSuccess}
+                    transactionError={transactionError}
+                    transactionCanceled={transactionCanceled}
+                />
+            }
+
         </div>
     )
 }
