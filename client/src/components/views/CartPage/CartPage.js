@@ -4,8 +4,7 @@ import { getCartItems, removeCartItem, onSuccessBuy } from '../../../_actions/us
 import UserCardBlock from './Sections/UserCardBlock'
 import { Result, Empty } from 'antd'
 import Paypal from '../../utils/Paypal'
-import Axios from 'axios'
-import { response } from 'express'
+
 
 function CartPage(props) {
 
@@ -54,6 +53,7 @@ function CartPage(props) {
         }))
             .then(response => {
                 if (response.payload.success) {
+                    console.log("success!!!!!!!!!1")
                     setShowSuccess(true)
                     setShowTotal(false)
                 }
