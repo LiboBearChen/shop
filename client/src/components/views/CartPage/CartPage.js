@@ -4,6 +4,7 @@ import { getCartItems, removeCartItem, onSuccessBuy } from '../../../_actions/us
 import UserCardBlock from './Sections/UserCardBlock'
 import { Result, Empty } from 'antd'
 import Paypal from '../../utils/Paypal'
+import Axios from 'axios'
 
 
 function CartPage(props) {
@@ -48,16 +49,22 @@ function CartPage(props) {
 
     const transactionSuccess = (data) => {
         console.log("!!!!!!!!!!!!!!!!!!!!!!!!!")
-        dispatch(onSuccessBuy({
+        let variables={
             cartDetail: props.user.cartDetail,
             paymentData: data
-        }))
+        }
+        Axios.post('/api/users/successBuy',variables)
             .then(response => {
                 console.log(response)
                 if (response.payload.success) {
-                    
                     setShowSuccess(true)
                     setShowTotal(false)
+                    dispatch(onSuccessBuy({
+                        cart:response.data.cart,
+                        cartDetail:response.data.cartDetail
+                    }))
+                }else{
+                    alert('Failed to buy it')
                 }
             })
     }
