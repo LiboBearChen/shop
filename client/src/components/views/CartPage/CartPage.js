@@ -47,13 +47,15 @@ function CartPage(props) {
     }
 
     const transactionSuccess = (data) => {
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!")
         dispatch(onSuccessBuy({
             cartDetail: props.user.cartDetail,
             paymentData: data
         }))
             .then(response => {
+                console.log(response)
                 if (response.payload.success) {
-                    console.log("success!!!!!!!!!1")
+                    
                     setShowSuccess(true)
                     setShowTotal(false)
                 }

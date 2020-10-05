@@ -164,7 +164,7 @@ router.post('/successBuy', auth, (req, res) => {
 
     transactionData.data = req.body.paymentData
     transactionData.product = history
-
+    console.log("!!!!!!!!!!!11",transactionData)
     User.findOneAndUpdate(
         { _id: req.user._id },
         { $push: { history: history }, $set: { cart: [] } },
