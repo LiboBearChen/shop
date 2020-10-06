@@ -48,7 +48,7 @@ function CartPage(props) {
     }
 
     const transactionSuccess = (data) => {
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!")
+        
         let variables={
             cartDetail: props.user.cartDetail,
             paymentData: data
@@ -56,7 +56,7 @@ function CartPage(props) {
         Axios.post('/api/users/successBuy',variables)
             .then(response => {
                 console.log(response)
-                if (response.payload.success) {
+                if (response.data.success) {
                     setShowSuccess(true)
                     setShowTotal(false)
                     dispatch(onSuccessBuy({
