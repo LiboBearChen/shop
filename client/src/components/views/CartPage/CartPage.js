@@ -48,22 +48,22 @@ function CartPage(props) {
     }
 
     const transactionSuccess = (data) => {
-        
-        let variables={
+
+        let variables = {
             cartDetail: props.user.cartDetail,
             paymentData: data
         }
-        Axios.post('/api/users/successBuy',variables)
+        Axios.post('/api/users/successBuy', variables)
             .then(response => {
-                console.log(response)
+
                 if (response.data.success) {
                     setShowSuccess(true)
                     setShowTotal(false)
                     dispatch(onSuccessBuy({
-                        cart:response.data.cart,
-                        cartDetail:response.data.cartDetail
+                        cart: response.data.cart,
+                        cartDetail: response.data.cartDetail
                     }))
-                }else{
+                } else {
                     alert('Failed to buy it')
                 }
             })
@@ -96,14 +96,17 @@ function CartPage(props) {
                         </div>
                 }
             </div>
-            {ShowTotal &&
+                <input disabled={!ShowTotal}>
                 <Paypal
-                    toPay={Total}
-                    onSuccess={transactionSuccess}
-                    transactionError={transactionError}
-                    transactionCanceled={transactionCanceled}
-                />
-            }
+                toPay={Total}
+                onSuccess={transactionSuccess}
+                transactionError={transactionError}
+                transactionCanceled={transactionCanceled}
+                
+            />
+                </input>
+            
+
 
         </div>
     )
