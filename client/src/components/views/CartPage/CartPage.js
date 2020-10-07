@@ -96,16 +96,17 @@ function CartPage(props) {
                         </div>
                 }
             </div>
-                <input disabled={!ShowTotal}>
+            {ShowTotal &&
+
                 <Paypal
-                toPay={Total}
-                onSuccess={transactionSuccess}
-                transactionError={transactionError}
-                transactionCanceled={transactionCanceled}
-                
-            />
-                </input>
-            
+                    toPay={Total}
+                    onSuccess={transactionSuccess}
+                    transactionError={transactionError}
+                    transactionCanceled={transactionCanceled}
+                />
+
+            }
+
 
 
         </div>
