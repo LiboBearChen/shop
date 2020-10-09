@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import Axios from 'axios'
-
+import RenderCartImage from '../../utils/RenderCartImage'
 
 function HistoryPage() {
 
@@ -19,7 +19,7 @@ function HistoryPage() {
     }, [])
 
     const downloadItem = (productId) => {
-        
+        console.log(History)
     }
 
     return (
@@ -31,6 +31,7 @@ function HistoryPage() {
             <table>
                 <thead>
                     <tr>
+                        <th>Picture</th>
                         <th>Product Name</th>
                         <th>Payment Id</th>
                         <th>Price</th>
@@ -41,7 +42,8 @@ function HistoryPage() {
                 <tbody>
                     {History.map((item,index)=>(
                         <tr key={index}>
-                            <td>{item.title}</td>
+                            <td><RenderCartImage images={item.images} /></td>
+                            <td>{item.name}</td>
                             <td>{item.paymentId}</td>
                             <td>{item.price}</td>
                             <td>{item.dateOfPurchase}</td>
