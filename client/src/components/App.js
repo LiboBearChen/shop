@@ -12,6 +12,7 @@ import UploadProductPage from "./views/UploadProductPage/UploadProductPage"
 import DetailProductPage from "./views/DetailProductPage/DetailProductPage"
 import CartPage from './views/CartPage/CartPage'
 import HistoryPage from './views/HistoryPage/HistoryPage'
+import AboutPage from './views/AboutPage/AboutPage'
 
 
 //null   Anyone Can go inside
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/product/:productID" component={Auth(DetailProductPage, null)} />
           <Route exact path="/user/cart" component={Auth(CartPage, true)} />
           <Route exact path="/history" component={Auth(HistoryPage, true)} />
+          <Route exact path="/about" component={Auth(AboutPage,  null)} />
         </Switch>
       </div>
       <Footer />

@@ -18,6 +18,10 @@ function HistoryPage() {
         })
     }, [])
 
+    const downloadItem = (productId) => {
+        
+    }
+
     return (
         <div style={{width:'80%',margin:'3rem auto'}} >
             <div style={{textAlign:'center'}} >
@@ -27,9 +31,9 @@ function HistoryPage() {
             <table>
                 <thead>
                     <tr>
+                        <th>Product Name</th>
                         <th>Payment Id</th>
                         <th>Price</th>
-                        <th>Quantity</th>
                         <th>Date of Purchase</th>
                         <th>Download</th>
                     </tr>
@@ -37,11 +41,11 @@ function HistoryPage() {
                 <tbody>
                     {History.map((item,index)=>(
                         <tr key={index}>
+                            <td>{item.title}</td>
                             <td>{item.paymentId}</td>
                             <td>{item.price}</td>
-                            <td>{item.quantity}</td>
                             <td>{item.dateOfPurchase}</td>
-                            <td><button onClick={()=>downloadItem(product._id)} >Download</button></td>
+                            <td><button onClick={()=>downloadItem(item._id)} >Download</button></td>
                         </tr>
                     ))}
                 </tbody>
