@@ -55,7 +55,7 @@ function CartPage(props) {
         }
         Axios.post('/api/users/successBuy', variables)
             .then(response => {
-
+                console.log(response)
                 if (response.data.success) {
                     setShowSuccess(true)
                     setShowTotal(false)
