@@ -96,16 +96,15 @@ function CartPage(props) {
                         </div>
                 }
             </div>
-            {ShowTotal &&
 
+            <div style={{ visibility: ShowTotal? 'visible': 'hidden'}}>
                 <Paypal
-                    toPay={Total}
-                    onSuccess={transactionSuccess}
-                    transactionError={transactionError}
-                    transactionCanceled={transactionCanceled}
-                />
+                toPay={Total}
+                onSuccess={transactionSuccess}
+                transactionError={transactionError}
+                transactionCanceled={transactionCanceled}
+            /></div>
 
-            }
 
 
 

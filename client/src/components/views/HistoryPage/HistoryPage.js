@@ -31,6 +31,7 @@ function HistoryPage() {
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Date of Purchase</th>
+                        <th>Download</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +41,7 @@ function HistoryPage() {
                             <td>{item.price}</td>
                             <td>{item.quantity}</td>
                             <td>{item.dateOfPurchase}</td>
+                            <td><button onClick={()=>downloadItem(product._id)} >Download</button></td>
                         </tr>
                     ))}
                 </tbody>
