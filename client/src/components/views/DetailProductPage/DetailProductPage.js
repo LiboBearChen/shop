@@ -8,6 +8,7 @@ import {useDispatch} from 'react-redux'
 
 function DetailProductPage(props) {
     const dispatch=useDispatch()
+    //get product id from url
     const productId = props.match.params.productID
     const [Product, setProduct] = useState([])
 

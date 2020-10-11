@@ -4,6 +4,7 @@ import RenderCartImage from '../../utils/RenderCartImage'
 
 function HistoryPage() {
 
+    const [Product, setProduct] = useState([])
     const [History, setHistory] = useState([])
 
     useEffect(() => {
@@ -19,6 +20,12 @@ function HistoryPage() {
     }, [])
 
     const downloadItem = (productId) => {
+        Axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
+            .then(response => {
+                setProduct(response.data[0])
+                console.log(Product)
+            })
+        
         console.log(History)
     }
 
@@ -47,7 +54,7 @@ function HistoryPage() {
                             <td>{item.paymentId}</td>
                             <td>{item.price}</td>
                             <td>{item.dateOfPurchase}</td>
-                            <td><button onClick={()=>downloadItem(item._id)} >Download</button></td>
+                            <td><button onClick={()=>downloadItem(item.id)} >Download</button></td>
                         </tr>
                     ))}
                 </tbody>
