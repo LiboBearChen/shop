@@ -150,6 +150,7 @@ router.post('/successBuy', auth, (req, res) => {
             id: item._id,
             price: item.price,
             images: item.images,
+            files:item.files,
             quantity:item.quantity,
             paymentId: req.body.paymentData.paymentID
 
