@@ -5,6 +5,7 @@ import RenderCartImage from '../../utils/RenderCartImage'
 function HistoryPage() {
 
     const [History, setHistory] = useState([])
+    const [Files, setFiles] = useState([])
 
     useEffect(() => {
         
@@ -20,6 +21,16 @@ function HistoryPage() {
 
     const downloadItem = (productId) => {
         console.log(History)
+        let files=[]
+        History.map((item)=>{
+            if(item.id===productId){
+                files=item.files
+                
+            }
+        })
+        setFiles(files)
+        console.log(files)
+        console.log(Files)
     }
 
     return (
