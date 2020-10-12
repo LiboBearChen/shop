@@ -5,7 +5,6 @@ import RenderCartImage from '../../utils/RenderCartImage'
 function HistoryPage() {
 
     const [History, setHistory] = useState([])
-    const [Files, setFiles] = useState([])
 
     useEffect(() => {
         
@@ -19,18 +18,8 @@ function HistoryPage() {
         })
     }, [])
 
-    const downloadItem = (productId) => {
-        console.log(History)
-        let files=[]
-        History.map((item)=>{
-            if(item.id===productId){
-                files=item.files
-                
-            }
-        })
-        setFiles(files)
-        console.log(files)
-        console.log(Files)
+    const downloadFiles = (files) => {
+        return `http://localhost:5000/${files}`
     }
 
     return (
@@ -58,7 +47,7 @@ function HistoryPage() {
                             <td>{item.paymentId}</td>
                             <td>{item.price}</td>
                             <td>{item.dateOfPurchase}</td>
-                            <td><button onClick={()=>downloadItem(item.id)} >Download</button></td>
+                            <td><a href={downloadFiles(item.files)} download> Download </a></td>
                         </tr>
                     ))}
                 </tbody>
