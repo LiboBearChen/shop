@@ -88,7 +88,7 @@ function CartPage(props) {
                         <h2>Total amount: ${Total} </h2>
                     </div> :
                     ShowSuccess ?
-                        <Result status="success" title="Successfully Purchased Items" /> :
+                        <Result status="success" title="Successfully Purchased Items. Please download in the History page." /> :
                         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} >
                             <br />
                             <Empty description={false} />
