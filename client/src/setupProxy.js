@@ -4,7 +4,8 @@ module.exports = function (app) {
     app.use(
         '/api',
         createProxyMiddleware({
-            target: 'http://liboshop.herokuapp.com',
+            //target: 'http://liboshop.herokuapp.com',
+            target: 'http://localhost:5000/',
             changeOrigin: true,
         })
     );

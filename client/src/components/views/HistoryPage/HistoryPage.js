@@ -19,7 +19,8 @@ function HistoryPage() {
     }, [])
 
     const downloadFiles = (files) => {
-        return `https://liboshop.herokuapp.com/${files}`
+        //return `https://liboshop.herokuapp.com/${files}`
+        return `http://localhost:5000/${files}`
     }
 
     return (

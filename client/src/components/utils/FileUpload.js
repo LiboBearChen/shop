@@ -50,7 +50,7 @@ function FileUpload(props) {
             <div style={{display:'flex',width:'350px',height:'240px',overflow:'scroll'}}>
                     {Images.map((image,index)=>(
                         <div key={index} onClick={()=>onDelete(image)}>
-                            <img style={{minWidth:'300px',width:'300px',height:'240px'}} src={`http://liboshop.herokuapp.com/${image}`} alt={`productImg`}/>
+                            <img style={{minWidth:'300px',width:'300px',height:'240px'}} src={`http://localhost:5000/${image}`} alt={`productImg`}/>
                         </div>
                     ))}
             </div>

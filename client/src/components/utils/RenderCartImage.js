@@ -5,7 +5,8 @@ function RenderCartImage(props) {
     const renderCartImage = (images) => {
         if (images && images.length > 0) {
             let image = images[0]
-            return `http://liboshop.herokuapp.com/${image}`
+            //return `http://liboshop.herokuapp.com/${image}`
+            return `http://localhost:5000/${image}`
         }
     }
 
