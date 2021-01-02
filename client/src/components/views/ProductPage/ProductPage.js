@@ -122,7 +122,40 @@ function ProductPage() {
     }
 
     return (
-        <div>LANDING!!!!!!!!!!!</div>
+        <div style={{ width: '75%', margin: '3rem auto' }}>
+            <div style={{ textAlign: 'center' }}>
+                <h2>All Products <Icon type="rocket" /></h2>
+            </div>
+            <Row gutter={[16, 16]}>
+                <Col lg={12} xs={24}>
+                    <CheckBox list={continents} handleFilters={filters => handleFilters(filters, "continents")} />
+                </Col>
+                <Col lg={12} xs={24}>
+                    <RadioBox list={price} handleFilters={filters => handleFilters(filters, "price")} />
+                </Col>
+            </Row>
+            <div style={{display:'flex',justifyContent:'flex-end',margin:'1rem auto'}}>
+                <SearchFeature refreshFunction={updateSearchTerms} />
+            </div>
+            
+            {Products.length === 0 ?
+                <div style={{ display: 'flex', height: '300px', justifyContent: 'center', alignItems: 'center' }}>
+                    <h2>Loading...</h2>
+                </div> :
+                <div>
+                    <Row gutter={[16, 16]}>
+                        {renderCards}
+                    </Row>
+                </div>
+            }
+            <br /><br />
+            {PostSize >= Limit &&
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <button onClick={onLoadMore}>Load More</button>
+                </div>
+            }
+
+        </div>
     )
 }
 
