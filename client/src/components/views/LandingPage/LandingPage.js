@@ -10,7 +10,7 @@ function ProductPage() {
 
     return (
         <div>
-            <Carousel>
+            <Carousel style={{width:'150px', maxHeight:'150px',border:'10px'}}>
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
