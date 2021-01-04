@@ -3,50 +3,25 @@ import Carousel from 'react-bootstrap/Carousel'
 import ImageSlider from '../../utils/ImageSlider'
 
 
-
 function ProductPage() {
 
 
 
     return (
         <div>
-            <Carousel style={{width:'150px', maxHeight:'150px',border:'10px'}}>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="holder.js/800x400?text=First slide&bg=373940"
-                        alt="First slide"
-                    />
-                    <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="holder.js/800x400?text=Second slide&bg=282c34"
-                        alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="holder.js/800x400?text=Third slide&bg=20232a"
-                        alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-            </Carousel>
+            <div id="carouselExampleSlidesOnly" className="carousel slide" data-ride="carousel">
+                <div className="carousel-inner">
+                    <div className="carousel-item active">
+                        <img className="d-block w-100" src={require('../../pictures/banner1.jpg')} style={{width:'150px', height:'150px'}} alt="First slide" />
+                    </div>
+                    <div className="carousel-item">
+                        <img className="d-block w-100" src={require('../../pictures/banner2.jpg')} alt="Second slide" />
+                    </div>
+                    <div className="carousel-item">
+                        <img className="d-block w-100" src={require('../../pictures/banner3.jpg')} alt="Third slide" />
+                    </div>
+                </div>
+            </div>
         </div>
 
     )

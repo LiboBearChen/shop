@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 // views
 import LandingPage from "./views/LandingPage/LandingPage.js";
 import ProductPage from "./views/ProductPage/ProductPage.js";
