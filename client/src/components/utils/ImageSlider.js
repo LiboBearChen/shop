@@ -1,16 +1,22 @@
 import React from 'react'
-import Carousel from 'react-bootstrap/Carousel'
 
 function ImageSlider(props) {
     return (
         <div>
-            <Carousel>
-                {props.images.map((image,index)=>(
-                    <Carousel.Item key={index}>
-                        <img style={{width:'100%', maxHeight:'150px'}} src={`http://localhost:5000/${image}`} alt="productImage" />
-                    </Carousel.Item>
-                ))}
-            </Carousel>
+            <div className="carousel slide" data-ride="carousel">
+                <div className="carousel-inner">
+                    {props.images.map((image, index) => (
+                        index === 0 ?
+                            <div className="carousel-item active" key={index}>
+                                <img className="d-block w-100" style={props.style} src={`http://localhost:5000/${image}`} alt="productImage" />
+                            </div>
+                            :
+                            <div className="carousel-item" key={index}>
+                                <img className="d-block w-100" style={props.style} src={`http://localhost:5000/${image}`} alt="productImage" />
+                            </div>
+                    ))}
+                </div>
+            </div>
         </div>
     )
 }

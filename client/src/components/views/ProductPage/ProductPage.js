@@ -64,7 +64,7 @@ function ProductPage() {
 
     const renderCards = Products.map((product, index) => {
         return <Col key={index} lg={6} md={8} xs={24}>
-            <Card hoverable={true} cover={<a href={`/product/${product._id}`}><ImageSlider images={product.images} /></a>} >
+            <Card hoverable={true} cover={<a href={`/product/${product._id}`}><ImageSlider images={product.images} style={{ width: '100%', height: '150px' }} /></a>} >
                 <Meta title={product.title} description={`$${product.price}`} />
             </Card>
         </Col>
@@ -122,7 +122,7 @@ function ProductPage() {
     }
 
     return (
-        <div style={{ width: '75%', margin: '3rem auto' }}>
+        <div className='container'>
             <div style={{ textAlign: 'center' }}>
                 <h2>All Products <Icon type="rocket" /></h2>
             </div>
