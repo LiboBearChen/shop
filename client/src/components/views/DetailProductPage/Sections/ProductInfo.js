@@ -15,7 +15,7 @@ function ProductInfo(props) {
 
     return (
         <div>
-            <h4>Details</h4>
+            <h5><strong>Details</strong></h5>
             <ul className="nav nav-pills">
                 <li className="active"><a data-toggle="pill" href="#home">Description</a></li>
                 <li><a data-toggle="pill" href="#menu1">Menu 1</a></li>

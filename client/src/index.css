@@ -56,7 +56,18 @@ tr:nth-child(even){
   background-color: #dddddd;
 }
 
-.nav-pills .active{
-  background-color: blue;
+/* styles nav pills */
+.nav-pills{
+  background-color: rgb(255, 255, 255);
+}
+.nav-pills a{
+  height: 500px;
+  width: 500px;
+  padding-right:  20px;
+}
+.nav-pills a:hover,
+.nav-pills .active {
+  background-color: rgb(21, 149, 223);
+  text-decoration: none;
   color: white;
 }
