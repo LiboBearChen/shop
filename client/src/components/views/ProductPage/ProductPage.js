@@ -126,14 +126,14 @@ function ProductPage() {
             <div style={{ textAlign: 'center' }}>
                 <h2>All Products <Icon type="rocket" /></h2>
             </div>
-            <Row gutter={[16, 16]}>
+            {/* <Row gutter={[16, 16]}>
                 <Col lg={12} xs={24}>
                     <CheckBox list={continents} handleFilters={filters => handleFilters(filters, "continents")} />
-                </Col>
+                </Col> 
                 <Col lg={12} xs={24}>
                     <RadioBox list={price} handleFilters={filters => handleFilters(filters, "price")} />
                 </Col>
-            </Row>
+            </Row> */}
             <div style={{display:'flex',justifyContent:'flex-end',margin:'1rem auto'}}>
                 <SearchFeature refreshFunction={updateSearchTerms} />
             </div>

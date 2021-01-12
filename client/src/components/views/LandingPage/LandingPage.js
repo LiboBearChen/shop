@@ -22,11 +22,9 @@ function ProductPage() {
                             <div className="card mx-auto" style={{ width: '18rem' }}>
                                 <img className="card-img-top" src={`http://localhost:5000/uploads/cards/card1.jpg`} alt="Card image cap" />
                                 <div className="card-body">
-                                    <h5 className="card-title">Stock market analysis website</h5>
-                                    <p className="card-text"><strong>Tech stack:</strong></p>
-                                    <p className="card-text">ReactJS</p>
+                                    <h5 className="card-title">Game Art Illustration</h5>
                                     <br />
-                                    <a href="/" className="btn btn-primary">Check it</a>
+                                    <a href="https://liboshop.herokuapp.com/product" className="btn btn-primary">Check it</a>
                                 </div>
                             </div>
                         </div>
@@ -34,11 +32,9 @@ function ProductPage() {
                             <div className="card mx-auto" style={{ width: '18rem' }}>
                                 <img className="card-img-top" src={`http://localhost:5000/uploads/cards/card2.jpg`} alt="Card image cap" />
                                 <div className="card-body">
-                                    <h5 className="card-title">Webpage analysis chrome extension</h5>
-                                    <p className="card-text"><strong>Tech stack:</strong></p>
-                                    <p className="card-text">jQuery</p>
+                                    <h5 className="card-title">Game MOD</h5>
                                     <br />
-                                    <a href="/" className="btn btn-primary">Check it</a>
+                                    <a href="https://liboshop.herokuapp.com/product" className="btn btn-primary">Check it</a>
                                 </div>
                             </div>
                         </div>
@@ -46,10 +42,8 @@ function ProductPage() {
                             <div className="card mx-auto" style={{ width: '18rem' }}>
                                 <img className="card-img-top" src={`http://localhost:5000/uploads/cards/card1.jpg`} alt="Card image cap" />
                                 <div className="card-body">
-                                    <h5 className="card-title">Digital product shopping website</h5>
-                                    <p className="card-text"><strong>Tech stack:</strong></p>
-                                    <p className="card-text">MERN(MongoDB, Express, React and Node.js)</p>
-                                    <a href="/" className="btn btn-primary">Check it</a>
+                                    <h5 className="card-title">Game Fiction</h5>
+                                    <a href="https://liboshop.herokuapp.com/product" className="btn btn-primary">Check it</a>
                                 </div>
                             </div>
                         </div>
@@ -59,10 +53,8 @@ function ProductPage() {
                             <div className="card mx-auto" style={{ width: '18rem' }}>
                                 <img className="card-img-top" src={`http://localhost:5000/uploads/cards/card2.jpg`} alt="Card image cap" />
                                 <div className="card-body">
-                                    <h5 className="card-title">Coding blog (this website)</h5>
-                                    <p className="card-text"><strong>Tech stack:</strong></p>
-                                    <p className="card-text">Flask</p>
-                                    <a href="/" className="btn btn-primary">Check it</a>
+                                    <h5 className="card-title">Game Maps</h5>
+                                    <a href="https://liboshop.herokuapp.com/product" className="btn btn-primary">Check it</a>
                                 </div>
                             </div>
                         </div>
