@@ -8,11 +8,11 @@ function ImageSlider(props) {
                     {props.images.map((image, index) => (
                         index === 0 ?
                             <div className="carousel-item active" key={index}>
-                                <img className="d-block w-100" style={props.style} src={`http://localhost:5000/${image}`} alt="productImage" />
+                                <img className="d-block w-100" style={props.style} src={`https://liboshop.herokuapp.com/${image}`} alt="productImage" />
                             </div>
                             :
                             <div className="carousel-item" key={index}>
-                                <img className="d-block w-100" style={props.style} src={`http://localhost:5000/${image}`} alt="productImage" />
+                                <img className="d-block w-100" style={props.style} src={`https://liboshop.herokuapp.com/${image}`} alt="productImage" />
                             </div>
                     ))}
                 </div>

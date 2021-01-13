@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ImageSlider from '../../utils/ImageSlider'
 
+
 const banners = [
     'uploads/banners/banner1.jpg',
     'uploads/banners/banner2.jpg',
@@ -20,30 +21,30 @@ function ProductPage() {
                     <div className="row " style={{ marginBottom: '20px' }}>
                         <div className="col">
                             <div className="card mx-auto" style={{ width: '18rem' }}>
-                                <img className="card-img-top" src={`http://localhost:5000/uploads/cards/card1.jpg`} alt="Card image cap" />
+                                <img className="card-img-top" src={`https://liboshop.herokuapp.com/uploads/cards/card1.jpg`} style={{ width: '100%', height: '200px' }} alt="Card image cap" />
                                 <div className="card-body">
                                     <h5 className="card-title">Game Art Illustration</h5>
                                     <br />
-                                    <a href="https://liboshop.herokuapp.com/product" className="btn btn-primary">Check it</a>
+                                    <a href="/product" className="btn btn-primary">Check it</a>
                                 </div>
                             </div>
                         </div>
                         <div className="col">
                             <div className="card mx-auto" style={{ width: '18rem' }}>
-                                <img className="card-img-top" src={`http://localhost:5000/uploads/cards/card2.jpg`} alt="Card image cap" />
+                                <img className="card-img-top" src={`https://liboshop.herokuapp.com/uploads/cards/card2.jpg`} style={{ width: '100%', height: '200px' }} alt="Card image cap" />
                                 <div className="card-body">
                                     <h5 className="card-title">Game MOD</h5>
                                     <br />
-                                    <a href="https://liboshop.herokuapp.com/product" className="btn btn-primary">Check it</a>
+                                    <a href="/product" className="btn btn-primary">Check it</a>
                                 </div>
                             </div>
                         </div>
                         <div className="col">
                             <div className="card mx-auto" style={{ width: '18rem' }}>
-                                <img className="card-img-top" src={`http://localhost:5000/uploads/cards/card1.jpg`} alt="Card image cap" />
+                                <img className="card-img-top" src={`https://liboshop.herokuapp.com/uploads/cards/card1.jpg`} style={{ width: '100%', height: '200px' }} alt="Card image cap" />
                                 <div className="card-body">
                                     <h5 className="card-title">Game Fiction</h5>
-                                    <a href="https://liboshop.herokuapp.com/product" className="btn btn-primary">Check it</a>
+                                    <a href="/product" className="btn btn-primary">Check it</a>
                                 </div>
                             </div>
                         </div>
@@ -51,10 +52,10 @@ function ProductPage() {
                     <div className="row ">
                         <div className="col">
                             <div className="card mx-auto" style={{ width: '18rem' }}>
-                                <img className="card-img-top" src={`http://localhost:5000/uploads/cards/card2.jpg`} alt="Card image cap" />
+                                <img className="card-img-top" src={`https://liboshop.herokuapp.com/uploads/cards/card2.jpg`} style={{ width: '100%', height: '200px' }} alt="Card image cap" />
                                 <div className="card-body">
                                     <h5 className="card-title">Game Maps</h5>
-                                    <a href="https://liboshop.herokuapp.com/product" className="btn btn-primary">Check it</a>
+                                    <a href="/product" className="btn btn-primary">Check it</a>
                                 </div>
                             </div>
                         </div>
