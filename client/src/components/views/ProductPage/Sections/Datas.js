@@ -1,4 +1,4 @@
-const continents = [
+const category = [
   { _id: 1, name: "Illustration" },
   { _id: 2, name: "MOD" },
   { _id: 3, name: "Fiction" },
@@ -12,4 +12,4 @@ const price = [
   { _id: 3, name: "$250 to $279", array: [5, 9.99] },
 ];
 
-export { continents, price };
+export { category, price };
