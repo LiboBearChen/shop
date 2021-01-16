@@ -1,36 +1,28 @@
-import React, { useState } from 'react'
-import {Radio,Collapse} from 'antd'
-
-const {Panel}=Collapse
-
-
+import React, { useState } from "react";
 
 function RadioBox(props) {
+  const [Value, setValue] = useState("0");
 
-    const [Value, setValue] = useState('0')
+  const renderRadioBox = () =>
+    props.list &&
+    props.list.map((value) => (
+      <label key={value._id}>
+        <input type="radio" value={`${value._id}`} /> {value.name}
+      </label>
+    ));
 
-    const renderRadioBox=()=>(
-        props.list&&props.list.map((value)=>(
-            <Radio key={value._id} value={`${value._id}`}>{value.name}</Radio>
-        ))
-    )
+  const handleChange = (event) => {
+    setValue(event.target.value);
+    props.handleFilters(event.target.value);
+  };
 
-    const habdleChange=(event)=>{
-        setValue(event.target.value)
-        props.handleFilters(event.target.value)
-    }
-
-    return (
-        <div>
-            <Collapse defaultActiveKey={['0']}>
-                <Panel header="Price" key="1">
-                    <Radio.Group onChange={habdleChange} value={Value} >
-                        {renderRadioBox()}
-                    </Radio.Group>
-                </Panel>
-            </Collapse>
-        </div>
-    )
+  return (
+    <div>
+      <div className="buttonGroup" onChange={handleChange} value={Value}>
+        <div className="row">{renderRadioBox()}</div>
+      </div>
+    </div>
+  );
 }
 
-export default RadioBox
+export default RadioBox;

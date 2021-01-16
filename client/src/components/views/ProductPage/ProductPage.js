@@ -59,6 +59,7 @@ function ProductPage() {
     setSkip(skip);
   };
 
+  //show all prodcut cards
   const renderCards = Products.map((product, index) => {
     return (
       <Col key={index} lg={6} md={8} xs={24}>
