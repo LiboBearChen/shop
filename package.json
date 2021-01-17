@@ -1,11 +1,9 @@
 {
-  "name": "react-boiler-plate",
-  "version": "1.0.0",
-  "description": "react boiler plate",
+  "name": "shop",
   "main": "index.js",
   "engine": {
-    "node": "12.14.0",
-    "npm": "6.13.4"
+    "node": "^12.14.0",
+    "npm": "^6.13.4"
   },
   "scripts": {
     "start": "node server/index.js",
@@ -15,7 +13,6 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
-    "@auth0/auth0-react": "^1.2.0",
     "async": "^3.2.0",
     "axios": "^0.20.0",
     "bcrypt": "^3.0.6",
