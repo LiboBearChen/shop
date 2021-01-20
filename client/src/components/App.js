@@ -25,10 +25,11 @@ function App() {
       <NavBar />
       <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
         <Switch>
-          <Route exact path="/" component={Auth(LandingPage, null)} />
-          <Route exact path="/product" component={Auth(ProductPage, null)} />
-          <Route exact path="/login" component={Auth(LoginPage, false)} />
-          <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          {/* <Route exact path="/" component={Auth(LandingPage, null)} /> */}
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/product" component={ProductPage} />
+          {/* <Route exact path="/login" component={Auth(LoginPage, false)} />
+          <Route exact path="/register" component={Auth(RegisterPage, false)} /> */}
           <Route
             exact
             path="/product/upload"
@@ -37,7 +38,7 @@ function App() {
           <Route
             exact
             path="/product/:productID"
-            component={Auth(DetailProductPage, null)}
+            component={DetailProductPage}
           />
           <Route exact path="/user/cart" component={Auth(CartPage, true)} />
           <Route exact path="/history" component={Auth(HistoryPage, true)} />
