@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
+import ProtectedRoute from "../auth/protected-route";
 import Auth from "../hoc/auth";
 
 // views
@@ -14,6 +15,7 @@ import DetailProductPage from "./views/DetailProductPage/DetailProductPage";
 import CartPage from "./views/CartPage/CartPage";
 import HistoryPage from "./views/HistoryPage/HistoryPage";
 import AboutPage from "./views/AboutPage/AboutPage";
+import Profile from "./views/ProfilePage/profile";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -28,6 +30,7 @@ function App() {
           {/* <Route exact path="/" component={Auth(LandingPage, null)} /> */}
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/product" component={ProductPage} />
+          <ProtectedRoute path="/profile" component={Profile} />
           {/* <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} /> */}
           <Route
