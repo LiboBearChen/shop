@@ -16,6 +16,8 @@ import CartPage from "./views/CartPage/CartPage";
 import HistoryPage from "./views/HistoryPage/HistoryPage";
 import AboutPage from "./views/AboutPage/AboutPage";
 import Profile from "./views/ProfilePage/profile";
+import Profile from "./views/ProfilePage/profile";
+import ExternalApi from "./views/ExternalApiPage/ExternalApi";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -31,6 +33,7 @@ function App() {
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/product" component={ProductPage} />
           <ProtectedRoute path="/profile" component={Profile} />
+          <ProtectedRoute path="/external-api" component={ExternalApi} />
           {/* <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} /> */}
           <Route
