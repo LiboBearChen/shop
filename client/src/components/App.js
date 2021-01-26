@@ -16,8 +16,7 @@ import CartPage from "./views/CartPage/CartPage";
 import HistoryPage from "./views/HistoryPage/HistoryPage";
 import AboutPage from "./views/AboutPage/AboutPage";
 import Profile from "./views/ProfilePage/profile";
-import Profile from "./views/ProfilePage/profile";
-import ExternalApi from "./views/ExternalApiPage/ExternalApi";
+import ExternalApi from "./views/ExternalApiPage/external-api";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
