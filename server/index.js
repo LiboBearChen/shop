@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
-const { clientOrigins, serverPort } = require("./config/env.dev");
+const { clientOrigins, serverPort } = require("../config");
 const { messagesRouter } = require("./messages/messages.router");
 
 const bodyParser = require("body-parser");
@@ -66,7 +66,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //Server Activation
-const port = process.env.serverPort || 5000;
+const port = serverPort || 5000;
 app.listen(port, () => {
   console.log(`Server Listening on ${port}`);
 });
