@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
-const { clientOrigins, serverPort } = require("../config");
+const { clientOrigins, serverPort } = require("./config");
 const { messagesRouter } = require("./messages/messages.router");
 
 const bodyParser = require("body-parser");
@@ -46,7 +46,6 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json());
 
-app.use("/api/users", require("./routes/users"));
 app.use("/api/product", require("./routes/product"));
 
 //use this to show the image you have in node js server to client (react js)
