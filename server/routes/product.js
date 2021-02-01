@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router();
+const productsRouter = express.Router();
 const { Product } = require("../models/Product");
 const multer = require("multer");
 
@@ -21,7 +21,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).single("file");
 
-router.post("/uploadImage", (req, res) => {
+productsRouter.post("/uploadImage", (req, res) => {
   upload(req, res, (err) => {
     if (err) return res.json({ success: false, err });
     return res.json({
@@ -32,7 +32,7 @@ router.post("/uploadImage", (req, res) => {
   });
 });
 
-router.post("/uploadProduct", (req, res) => {
+productsRouter.post("/uploadProduct", (req, res) => {
   const product = new Product(req.body);
   product.save((err) => {
     if (err) return res.status(400).json({ success: false, err });
@@ -40,7 +40,7 @@ router.post("/uploadProduct", (req, res) => {
   });
 });
 
-router.post("/getProducts", (req, res) => {
+productsRouter.post("/getProducts", (req, res) => {
   let order = req.body.order ? req.body.order : "desc";
   let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
   let limit = req.body.limit ? parseInt(req.body.limit) : 100;
@@ -91,7 +91,7 @@ router.post("/getProducts", (req, res) => {
   }
 });
 
-router.get("/products_by_id", (req, res) => {
+productsRouter.get("/products_by_id", (req, res) => {
   let type = req.query.type;
   let productIds = req.query.id;
 
@@ -112,4 +112,4 @@ router.get("/products_by_id", (req, res) => {
     });
 });
 
-module.exports = router;
+module.exports = productsRouter;

@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Icon, Col, Card, Row } from "antd";
 import ImageSlider from "../../utils/ImageSlider";
-import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
-import { category, price } from "./Sections/Datas";
+import { price } from "./Sections/Datas";
 import SearchFeature from "./Sections/SearchFeature";
 
 const { Meta } = Card;
@@ -29,20 +28,36 @@ function ProductPage() {
     getProducts(variables);
   }, []);
 
-  const getProducts = (variables) => {
-    Axios.post("/api/product/getProducts", variables).then((response) => {
-      if (response.data.success) {
-        if (variables.loadMore) {
-          setProducts([...Products, ...response.data.products]);
-        } else {
-          setProducts(response.data.products);
-        }
-
-        setPostSize(response.data.postSize);
+  const getProducts = async (variables) => {
+    const serverUrl = process.env.REACT_APP_SERVER_URL;
+    const response = await fetch(`${serverUrl}/api/product/getProducts`);
+    const responseData = await response.json();
+    if (response.data.success) {
+      if (variables.loadMore) {
+        setProducts([...Products, ...response.data.products]);
       } else {
-        alert("Failed to fetch product data");
+        setProducts(response.data.products);
       }
-    });
+
+      setPostSize(response.data.postSize);
+    } else {
+      alert("Failed to fetch product data");
+    }
+    // Axios.post("/api/product/getProducts", variables).then(
+    //   (response) => {
+    //     if (response.data.success) {
+    //       if (variables.loadMore) {
+    //         setProducts([...Products, ...response.data.products]);
+    //       } else {
+    //         setProducts(response.data.products);
+    //       }
+
+    //       setPostSize(response.data.postSize);
+    //     } else {
+    //       alert("Failed to fetch product data");
+    //     }
+    //   }
+    // );
   };
 
   const onLoadMore = () => {

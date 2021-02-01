@@ -5,7 +5,7 @@ module.exports = function (app) {
     "/api",
     createProxyMiddleware({
       //target: 'http://liboshop.herokuapp.com',
-      target: "http://localhost:6050/",
+      target: "http://localhost:6060/",
       changeOrigin: true,
     })
   );

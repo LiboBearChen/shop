@@ -4,6 +4,7 @@ const helmet = require("helmet");
 
 const { clientOrigins, serverPort } = require("./config");
 const { messagesRouter } = require("./messages/messages.router");
+const { productsRouter } = require("./routes/product");
 
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -23,6 +24,9 @@ app.use(express.json());
 app.use("/api", apiRouter);
 
 apiRouter.use("/messages", messagesRouter);
+apiRouter.use("/product", productsRouter);
+
+//app.use("/api/product", require("./routes/product"));
 
 app.use(function (err, req, res, next) {
   console.log(err);
@@ -38,18 +42,12 @@ const connect = mongoose
   .catch((err) => console.log(err));
 
 //to not get any deprecation warning or error
-//support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
 //to get json data
-// support parsing of application/json type post data
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json());
 
-app.use("/api/product", require("./routes/product"));
-
-//use this to show the image you have in node js server to client (react js)
-//https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
 app.use("/uploads", express.static("uploads"));
 
 // Serve static assets if in production
