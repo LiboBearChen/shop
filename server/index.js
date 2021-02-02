@@ -4,7 +4,7 @@ const helmet = require("helmet");
 
 const { clientOrigins, serverPort } = require("./config");
 const { messagesRouter } = require("./messages/messages.router");
-const { productsRouter } = require("./routes/product");
+const { productsRouter } = require("./routes/product.router");
 
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -14,6 +14,7 @@ const mongoose = require("mongoose");
 //App Variables
 const app = express();
 const apiRouter = express.Router();
+const productRouter = express.Router();
 const path = require("path");
 
 //App Configuration
@@ -22,11 +23,10 @@ app.use(cors({ origin: clientOrigins }));
 app.use(express.json());
 
 app.use("/api", apiRouter);
+app.use("/api", productRouter);
 
 apiRouter.use("/messages", messagesRouter);
-apiRouter.use("/product", productsRouter);
-
-//app.use("/api/product", require("./routes/product"));
+productRouter.use("/product", productsRouter);
 
 app.use(function (err, req, res, next) {
   console.log(err);

@@ -48,20 +48,20 @@ productsRouter.post("/getProducts", (req, res) => {
   let findArgs = {};
   let term = req.body.searchTerm;
 
-  for (let key in req.body.filters) {
-    if (req.body.filters[key].length > 0) {
-      if (key === "price") {
-        findArgs[key] = {
-          //>=
-          $gte: req.body.filters[key][0],
-          //<=
-          $lte: req.body.filters[key][1],
-        };
-      } else {
-        findArgs[key] = req.body.filters[key];
-      }
-    }
-  }
+  // for (let key in req.body.filters) {
+  //   if (req.body.filters[key].length > 0) {
+  //     if (key === "price") {
+  //       findArgs[key] = {
+  //         //>=
+  //         $gte: req.body.filters[key][0],
+  //         //<=
+  //         $lte: req.body.filters[key][1],
+  //       };
+  //     } else {
+  //       findArgs[key] = req.body.filters[key];
+  //     }
+  //   }
+  // }
 
   if (term) {
     Product.find(findArgs)
@@ -112,4 +112,6 @@ productsRouter.get("/products_by_id", (req, res) => {
     });
 });
 
-module.exports = productsRouter;
+module.exports = {
+  productsRouter,
+};

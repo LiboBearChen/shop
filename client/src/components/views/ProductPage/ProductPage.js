@@ -21,8 +21,11 @@ function ProductPage() {
 
   useEffect(() => {
     const variables = {
-      skip: Skip,
+      order: null,
+      sortBy: null,
       limit: Limit,
+      skip: Skip,
+      searchTerm: "",
     };
 
     getProducts(variables);
@@ -30,34 +33,37 @@ function ProductPage() {
 
   const getProducts = async (variables) => {
     const serverUrl = process.env.REACT_APP_SERVER_URL;
-    const response = await fetch(`${serverUrl}/api/product/getProducts`);
-    const responseData = await response.json();
-    if (response.data.success) {
-      if (variables.loadMore) {
-        setProducts([...Products, ...response.data.products]);
-      } else {
-        setProducts(response.data.products);
-      }
-
-      setPostSize(response.data.postSize);
-    } else {
-      alert("Failed to fetch product data");
-    }
-    // Axios.post("/api/product/getProducts", variables).then(
-    //   (response) => {
-    //     if (response.data.success) {
-    //       if (variables.loadMore) {
-    //         setProducts([...Products, ...response.data.products]);
-    //       } else {
-    //         setProducts(response.data.products);
-    //       }
-
-    //       setPostSize(response.data.postSize);
-    //     } else {
-    //       alert("Failed to fetch product data");
-    //     }
+    // const response = await fetch(`${serverUrl}/api/product/getProducts`).json();
+    // const responseData = await response.json();
+    // if (response.data.success) {
+    //   if (variables.loadMore) {
+    //     setProducts([...Products, ...response.data.products]);
+    //   } else {
+    //     setProducts(response.data.products);
     //   }
-    // );
+
+    //   setPostSize(response.data.postSize);
+    // } else {
+    //   alert("Failed to fetch product data");
+    // }
+
+    // "/api/product/getProducts"
+
+    Axios.post(`${serverUrl}/api/product/getProducts`, variables).then(
+      (response) => {
+        if (response.data.success) {
+          if (variables.loadMore) {
+            setProducts([...Products, ...response.data.products]);
+          } else {
+            setProducts(response.data.products);
+          }
+
+          setPostSize(response.data.postSize);
+        } else {
+          alert("Failed to fetch product data");
+        }
+      }
+    );
   };
 
   const onLoadMore = () => {
