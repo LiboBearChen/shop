@@ -6,8 +6,6 @@ import RadioBox from "./Sections/RadioBox";
 import { price } from "./Sections/Datas";
 import SearchFeature from "./Sections/SearchFeature";
 
-const { Meta } = Card;
-
 function ProductPage() {
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
@@ -71,21 +69,39 @@ function ProductPage() {
   //show all prodcut cards
   const renderCards = Products.map((product, index) => {
     return (
-      <Col key={index} lg={6} md={8} xs={24}>
-        <Card
-          hoverable={true}
-          cover={
-            <a href={`/product/${product._id}`}>
-              <ImageSlider
-                images={product.images}
-                style={{ width: "100%", height: "150px" }}
-              />
+      <div className="col">
+        <div className="card mx-auto" style={{ width: "18rem" }}>
+          <img
+            className="card-img-top"
+            src={`https://liboshop.herokuapp.com/uploads/cards/card1.jpg`}
+            style={{ width: "100%", height: "200px" }}
+            alt="Card image cap"
+          />
+          <div className="card-body">
+            <h5 className="card-title">Game Art Illustration</h5>
+            <br />
+            <a href="/product" className="btn btn-primary">
+              Check it
             </a>
-          }
-        >
-          <Meta title={product.title} description={`$${product.price}`} />
-        </Card>
-      </Col>
+          </div>
+        </div>
+      </div>
+
+      // <Col key={index} lg={6} md={8} xs={24}>
+      //   <Card
+      //     hoverable={true}
+      //     cover={
+      //       <a href={`/product/${product._id}`}>
+      //         <ImageSlider
+      //           images={product.images}
+      //           style={{ width: "100%", height: "150px" }}
+      //         />
+      //       </a>
+      //     }
+      //   >
+      //     <Meta title={product.title} description={`$${product.price}`} />
+      //   </Card>
+      // </Col>
     );
   });
 
@@ -141,9 +157,7 @@ function ProductPage() {
   return (
     <div className="container">
       <div style={{ textAlign: "center" }}>
-        <h2>
-          All Products <Icon type="rocket" />
-        </h2>
+        <h2>All Products</h2>
       </div>
       <Row gutter={[16, 16]}>
         <RadioBox
