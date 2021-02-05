@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { Icon, Col, Card, Row } from "antd";
-import ImageSlider from "../../utils/ImageSlider";
 import RadioBox from "./Sections/RadioBox";
 import { price } from "./Sections/Datas";
 import SearchFeature from "./Sections/SearchFeature";
@@ -69,39 +67,22 @@ function ProductPage() {
   //show all prodcut cards
   const renderCards = Products.map((product, index) => {
     return (
-      <div className="col">
-        <div className="card mx-auto" style={{ width: "18rem" }}>
-          <img
-            className="card-img-top"
-            src={`https://liboshop.herokuapp.com/uploads/cards/card1.jpg`}
-            style={{ width: "100%", height: "200px" }}
-            alt="Card image cap"
-          />
-          <div className="card-body">
-            <h5 className="card-title">Game Art Illustration</h5>
-            <br />
-            <a href="/product" className="btn btn-primary">
-              Check it
-            </a>
+      <div className="col" key={index}>
+        <a href={`/product/${product._id}`}>
+          <div className="card mx-auto" style={{ width: "18rem" }}>
+            <img
+              className="card-img-top"
+              src={`https://liboshop.herokuapp.com/${product.images[0]}`}
+              style={{ width: "100%", height: "200px" }}
+              alt="Card image cap"
+            />
+            <div className="card-body">
+              <h5 className="card-title">{product.title}</h5>
+              <p>{product.price}</p>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
-
-      // <Col key={index} lg={6} md={8} xs={24}>
-      //   <Card
-      //     hoverable={true}
-      //     cover={
-      //       <a href={`/product/${product._id}`}>
-      //         <ImageSlider
-      //           images={product.images}
-      //           style={{ width: "100%", height: "150px" }}
-      //         />
-      //       </a>
-      //     }
-      //   >
-      //     <Meta title={product.title} description={`$${product.price}`} />
-      //   </Card>
-      // </Col>
     );
   });
 
@@ -159,12 +140,12 @@ function ProductPage() {
       <div style={{ textAlign: "center" }}>
         <h2>All Products</h2>
       </div>
-      <Row gutter={[16, 16]}>
+      <div className="row ">
         <RadioBox
           list={price}
           handleFilters={(filters) => handleFilters(filters, "price")}
         />
-      </Row>
+      </div>
       <div
         style={{
           display: "flex",
@@ -188,7 +169,7 @@ function ProductPage() {
         </div>
       ) : (
         <div>
-          <Row gutter={[16, 16]}>{renderCards}</Row>
+          <div className="row ">{renderCards}</div>
         </div>
       )}
       <br />
