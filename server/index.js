@@ -21,17 +21,20 @@ const path = require("path");
 app.use(helmet());
 app.use(cors({ origin: clientOrigins }));
 app.use(express.json());
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use("/uploads", express.static("uploads"));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+  });
+}
 app.use("/api", apiRouter);
 app.use("/api", productRouter);
-
 apiRouter.use("/messages", messagesRouter);
 productRouter.use("/product", productsRouter);
-
-app.use(function (err, req, res, next) {
-  console.log(err);
-  res.status(500).send(err.message);
-});
 
 const connect = mongoose
   .connect(config.mongoURI, {
@@ -41,26 +44,10 @@ const connect = mongoose
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
 
-//to not get any deprecation warning or error
-app.use(bodyParser.urlencoded({ extended: true }));
-//to get json data
-app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(express.json());
-
-app.use("/uploads", express.static("uploads"));
-
-// Serve static assets if in production
-if (process.env.NODE_ENV === "production") {
-  // Set static folder
-  // All the javascript and css files will be read and served from this folder
-  app.use(express.static("client/build"));
-
-  // index.html for all page routes    html or routing and naviagtion
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
-  });
-}
+app.use(function (err, req, res, next) {
+  console.log(err);
+  res.status(500).send(err.message);
+});
 
 //Server Activation
 const port = serverPort || 5000;

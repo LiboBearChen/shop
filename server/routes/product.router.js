@@ -106,12 +106,11 @@ productsRouter.get("/products_by_id", (req, res) => {
     });
   }
 
-  Product.find({ _id: { $in: productIds } })
-    .populate("writer")
-    .exec((err, product) => {
-      if (err) return res.status(400).send(err);
-      return res.status(200).send(product);
-    });
+  //.populate("writer")
+  Product.find({ _id: { $in: productIds } }).exec((err, product) => {
+    if (err) return res.status(400).send(err);
+    return res.status(200).send(product);
+  });
 });
 
 module.exports = {

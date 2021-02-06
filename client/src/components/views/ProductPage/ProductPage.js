@@ -169,7 +169,7 @@ function ProductPage() {
         </div>
       ) : (
         <div>
-          <div className="row ">{renderCards}</div>
+          <div className="row">{renderCards}</div>
         </div>
       )}
       <br />
