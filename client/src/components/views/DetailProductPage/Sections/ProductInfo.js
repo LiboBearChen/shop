@@ -22,16 +22,7 @@ function ProductInfo(props) {
             Description
           </a>
         </li>
-        <li>
-          <a data-toggle="pill" href="#menu1">
-            Menu 1
-          </a>
-        </li>
-        <li>
-          <a data-toggle="pill" href="#menu2">
-            Menu 2
-          </a>
-        </li>
+
         <li>
           <a data-toggle="pill" href="#menu3">
             Price
@@ -42,18 +33,7 @@ function ProductInfo(props) {
         <div id="home" className="tab-pane fade in active show">
           <p>{Product.description}</p>
         </div>
-        <div id="menu1" className="tab-pane fade">
-          <p>
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat.
-          </p>
-        </div>
-        <div id="menu2" className="tab-pane fade">
-          <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam.
-          </p>
-        </div>
+
         <div id="menu3" className="tab-pane fade">
           <p>{Product.price} $</p>
           <br />
