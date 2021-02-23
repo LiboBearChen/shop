@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import ProductImage from "./Sections/ProductImage";
 import ProductInfo from "./Sections/ProductInfo";
+import SimilarProduct from "./Sections/SimilarProduct";
 //import { addToCart } from "../../../_actions/user_actions";
 import { useDispatch } from "react-redux";
 
@@ -37,6 +38,10 @@ function DetailProductPage(props) {
         <div className="col" key="info">
           <ProductInfo addToCart={addToCartHandler} detail={Product} />
         </div>
+      </div>
+      <br />
+      <div className="row">
+        <SimilarProduct />
       </div>
     </div>
   );
