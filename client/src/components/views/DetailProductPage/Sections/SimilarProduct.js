@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 
-function SimilarProduct() {
+function SimilarProduct(props) {
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(8);
@@ -11,7 +11,7 @@ function SimilarProduct() {
     category: [],
     price: [],
   });
-
+  const =this.props.criteria
   useEffect(() => {
     const variables = {
       order: null,

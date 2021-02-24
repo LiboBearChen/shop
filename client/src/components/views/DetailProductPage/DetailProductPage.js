@@ -41,7 +41,12 @@ function DetailProductPage(props) {
       </div>
       <br />
       <div className="row">
-        <SimilarProduct />
+        <div className="col" key="text" style={{ width: "10%" }}>
+          <p>Similar Products: </p>
+        </div>
+        <div className="col" key="similar" style={{ width: "90%" }}>
+          <SimilarProduct criteria={Product.} />
+        </div>
       </div>
     </div>
   );
