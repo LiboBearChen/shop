@@ -12,6 +12,7 @@ function SimilarProduct(props) {
     price: [],
   });
   const =this.props.criteria
+  
   useEffect(() => {
     const variables = {
       order: null,
