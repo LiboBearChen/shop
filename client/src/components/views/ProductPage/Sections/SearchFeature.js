@@ -1,25 +1,31 @@
 import React, { useState } from "react";
-import { Input } from "antd";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
-const { Search } = Input;
+const SearchFeature = (props) => {
+  const onChange = (e, selectedOption) => {
+    products.forEach((product) => {
+      if (product.name === selectedOption) {
+      }
+    });
 
-function SearchFeature(props) {
-  const [SearchTerms, setSearchTerms] = useState("");
-
-  const onChangeSearch = (event) => {
-    setSearchTerms(event.currentTarget.value);
-    props.refreshFunction(event.currentTarget.value);
+    selectedOption ? setState() : setState();
   };
-
   return (
-    <div>
-      <Search
-        value={SearchTerms}
-        onChange={onChangeSearch}
-        placeholder="Search By Product Name"
-      />
-    </div>
+    <Autocomplete
+      options={props.productNames}
+      getOptionLabel={(option) => option}
+      style={{ width: 300 }}
+      onChange={onChange}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label="available products"
+          variant="outlined"
+          fullWidth
+        />
+      )}
+    />
   );
-}
+};
 
 export default SearchFeature;

@@ -6,6 +6,7 @@ import SearchFeature from "./Sections/SearchFeature";
 
 function ProductPage() {
   const [Products, setProducts] = useState([]);
+  const [productNames, setProductNames] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(8);
   const [PostSize, setPostSize] = useState(0);
@@ -41,7 +42,7 @@ function ProductPage() {
           } else {
             setProducts(response.data.products);
           }
-
+          setProductNames(response.data.products.map((a) => a.name));
           setPostSize(response.data.postSize);
         } else {
           alert("Failed to fetch product data");
@@ -122,19 +123,6 @@ function ProductPage() {
     setFilters(newFilters);
   };
 
-  const updateSearchTerms = (newSearchTerm) => {
-    const variables = {
-      skip: 0,
-      limit: Limit,
-      filters: Filters,
-      searchTerm: newSearchTerm,
-    };
-
-    getProducts(variables);
-    setSkip(0);
-    setSearchTerms(newSearchTerm);
-  };
-
   return (
     <div className="container">
       <div style={{ textAlign: "center" }}>
@@ -153,7 +141,7 @@ function ProductPage() {
           margin: "1rem auto",
         }}
       >
-        <SearchFeature refreshFunction={updateSearchTerms} />
+        <SearchFeature productNames={productNames} products={Products} />
       </div>
 
       {Products.length === 0 ? (
